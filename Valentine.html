@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Will You Be My Valentine? 🧸❤️</title>
+<style>
+body {
+  background-color: #ffe6f0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: #ff4d88;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+button {
+  font-size: 20px;
+  padding: 12px 25px;
+  margin: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+#yes {
+  background-color: #ff4d88;
+  color: white;
+}
+
+#no {
+  background-color: #cccccc;
+}
+
+#message {
+  font-size: 28px;
+  color: #ff0066;
+  margin-top: 30px;
+}
+
+.heart {
+  position: absolute;
+  font-size: 24px;
+  animation: floatUp 2s forwards;
+}
+
+@keyframes floatUp {
+  0% {opacity:1; transform:translateY(0);}
+  100% {opacity:0; transform:translateY(-300px);}
+}
+
+#loveLetter {
+  display: none;
+  background-color: #fff0f5;
+  border: 2px solid #ff4d88;
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 24px;
+  color: #ff0066;
+  margin-top: 20px;
+  max-width: 80%;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+</style>
+</head>
+<body>
+
+<h1>Will you be my Valentine? 🧸❤️</h1>
+
+<button id="yes" onclick="yesClicked()">Yes 💕</button>
+<button id="no" onmouseover="teaseNo()">No 😜</button>
+
+<p id="message"></p>
+<div id="loveLetter">
+I love you and you're so handsome 😘.<br>
+Every time I see you, my world stops. 💖
+</div>
+
+<script>
+// Function to tease the "No" button
+function teaseNo() {
+  const button = document.getElementById("no");
+  const msg = document.getElementById("message");
+  
+  button.style.position = "absolute";
+  button.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  button.style.top = Math.random() * (window.innerHeight - 50) + "px";
+  
+  msg.innerHTML = "🧸💔 Come on, don't be mean!";
+}
+
+// Function when Yes is clicked
+function yesClicked() {
+  const msg = document.getElementById("message");
+  msg.innerHTML = "Yay! 💕 You made my heart explode!";
+
+  // Pop hearts everywhere
+  for (let i = 0; i < 50; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = Math.random() * window.innerHeight + "px";
+    heart.innerHTML = "❤️";
+    document.body.appendChild(heart);
+
+    // Remove heart after animation
+    setTimeout(() => heart.remove(), 2000);
+  }
+
+  // Show love letter after 1 sec
+  setTimeout(() => {
+    document.getElementById("loveLetter").style.display = "block";
+  }, 1000);
+}
+</script>
+
+</body>
+</html>
